@@ -17,9 +17,12 @@ import {
   checkCoursePurchaseInfoService,
   fetchStudentViewCourseListService,
 } from "@/services";
+// import { RiMicAiFill } from "@eact-icons/ri";
 import { ArrowUpDownIcon } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import start from "../../../assets/start.mp3";
+import ai from "../courses/ai.png";
 
 function createSearchParamsHelper(filterParams) {
   const queryParams = [];
@@ -47,6 +50,10 @@ function StudentViewCoursesPage() {
   } = useContext(StudentContext);
   const navigate = useNavigate();
   const { auth } = useContext(AuthContext);
+  const [input, setInput] = useState("");
+  const startSound = new Audio(start);
+  const [listening, setListening] = useState(false);
+  const [recommendations, setRecommendations] = useState([]);
 
   function handleFilterOnChange(getSectionId, getCurrentOption) {
     let cpyFilters = { ...filters };
@@ -105,11 +112,11 @@ function StudentViewCoursesPage() {
     } catch (error) {
       console.log(error)
       // navigate(`/course/details/${getCurrentCourseId}`);
-      
-    }
-    
 
-   
+    }
+
+
+
   }
 
   useEffect(() => {
@@ -137,7 +144,27 @@ function StudentViewCoursesPage() {
 
   return (
     <div className="container mx-auto p-4">
+      <div className="flex items-center justify-between w-full mb-5">
       <h1 className="text-3xl font-bold mb-4">All Courses</h1>
+      <button className="px-[20px] py-[10px]
+      text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none
+      focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2
+
+      rounded-[10px] text[18px] font-light flex gap-2
+      cursor-pointer items-center justify-center"
+      onClick={()=> navigate("/courses/search")}
+      >
+        Search With AI
+        <img src={ai} className="w-[30px] h-[30px] rounded-full
+        hidden lg:block" alt="" />
+        {/* <img src={ai1} className="w-[35px] h-[35px] rounded-full lg:hidden"
+        alt=""/> */}
+
+      </button>
+
+      </div>
+
+
       <div className="flex flex-col md:flex-row gap-4">
         <aside className="w-full md:w-64 space-y-4">
           <div>
