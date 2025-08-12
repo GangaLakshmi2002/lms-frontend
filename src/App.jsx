@@ -10,7 +10,7 @@ import NotFoundPage from "./pages/not-found";
 import StudentViewCourseDetailsPage from "./pages/student/course-details";
 import StudentViewCourseProgressPage from "./pages/student/course-progress";
 import StudentViewCoursesPage from "./pages/student/courses";
-import SearchWithAi from "./pages/student/courses/searchWithAi";
+import SearchWithAi from "./pages/student/courses/SearchWithAi";
 import StudentHomePage from "./pages/student/home";
 import PaypalPaymentReturnPage from "./pages/student/payment-return";
 import StudentCoursesPage from "./pages/student/student-courses";
